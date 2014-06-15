@@ -1,0 +1,139 @@
+1                                                          The SAS System                          12:53 Wednesday, January 15, 2014
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2002-2010 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.3 (TS1M1) 
+      Licensed to US CENTERS FOR DISEASE CONTROL & PRVNTN, Site 70024534.
+NOTE: This session is executing on the W32_7PRO  platform.
+
+
+
+NOTE: Updated analytical products:
+
+SAS/STAT 9.3_M1, SAS/ETS 9.3_M1, SAS/OR 9.3_M1
+
+NOTE: SAS initialization used:
+      real time           1.16 seconds
+      cpu time            0.28 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program Files\SAS\SASFoundation\9.2\autoexec.sas.
+
+NOTE: Libref LIBRARY was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\FORMATS
+NOTE: Libref CENSUS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\CENSUS
+NOTE: Libname CEN refers to the same physical library as CENSUS.
+NOTE: Libref CEN was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\CENSUS
+NOTE: Libref HARS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\CORE
+NOTE: Libref ADJ was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\CORE\adjstmnt
+NOTE: Directory for library LAB contains files of mixed engine types.
+NOTE: Libref LAB was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\RAWLAB
+NOTE: Libref IND was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\IS
+NOTE: Library HARS2 does not exist.
+NOTE: Libref NDP was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_STORE02\SURV_DATA\NDP
+NOTE: Libname CASE refers to the same physical library as HARS.
+2                                         The SAS System         12:53 Wednesday, January 15, 2014
+
+NOTE: Libref CASE was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\CORE
+NOTE: Libname WT refers to the same physical library as ADJ.
+NOTE: Libref WT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\CORE\adjstmnt
+NOTE: Libref DOC was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\DOCUMENT
+NOTE: Libname LABDOC refers to the same physical library as LAB.
+NOTE: Libref LABDOC was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\RAWLAB
+NOTE: Libname IS refers to the same physical library as IND.
+NOTE: Libref IS was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\cdc\project\NCHHSTP_HICSB_Store02\SURV_DATA\IS
+
+NOTE: AUTOEXEC processing completed.
+
+1          
+2          data test;
+3          infile "C:\Users\XGG8\Desktop\test.txt" dlm=",";
+4          input x1$ / x2 x3 x4 ;
+5          run;
+
+ERROR: Physical file does not exist, C:\Users\XGG8\Desktop\test.txt.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: SAS set option OBS=0 and will continue to check statements. 
+      This might cause NOTE: No observations in data set.
+WARNING: The data set WORK.TEST may be incomplete.  When this step was stopped there were 0 
+         observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.19 seconds
+      cpu time            0.03 seconds
+      
+
+6          
+7          
+8          data test2;
+9          set test;
+10         var1=substr(x1, 1,1);
+11         var2=substr(x1, 2);
+12         run;
+
+NOTE: The data set WORK.TEST2 has 0 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+13         
+3                                         The SAS System         12:53 Wednesday, January 15, 2014
+
+14         proc sql;
+15         create table test3 as
+16         select var1, var2, x2, x3, x4
+17         from test2;
+NOTE: Table WORK.TEST3 created, with 0 rows and 5 columns.
+
+18         quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.01 seconds
+      
+
+19         
+20         proc print;run;
+
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.06 seconds
+      
+
+ERROR: Errors printed on page 2.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           2.29 seconds
+      cpu time            0.48 seconds
+      
